@@ -5,321 +5,205 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neonblue Templates</title>
+    <meta name="description" content="Neon Blue customer success template directory.">
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Styles (using the marketing report styles) -->
+    <link rel="stylesheet" href="marketing-report-template/styles.css">
+    <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
     <style>
-        :root {
-            --bg-color: #0B0E14;
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --card-border: rgba(255, 255, 255, 0.08);
-            --text-main: #FFFFFF;
-            --text-muted: #8B949E;
-            --blue: #3B82F6;
-            --navy: #1E3A8A;
-            --purple: #8B5CF6;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Subtle Background Effects */
-        .bg-glow {
-            position: absolute;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, rgba(11, 14, 20, 0) 70%);
-            top: -200px;
-            left: -200px;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .bg-glow-purple {
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.05) 0%, rgba(11, 14, 20, 0) 70%);
-            bottom: -100px;
-            right: -100px;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .container {
-            max-width: 900px;
-            width: 100%;
-            z-index: 1;
-            text-align: center;
-        }
-
-        .header {
-            margin-bottom: 3rem;
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 6px 14px;
-            border-radius: 20px;
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            color: #93C5FD;
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            margin-bottom: 1.5rem;
-        }
-
-        .badge .dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background-color: #3B82F6;
-            margin-right: 8px;
-            box-shadow: 0 0 8px rgba(59, 130, 246, 0.8);
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            letter-spacing: -0.5px;
-        }
-
-        p.subtitle {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            max-width: 500px;
+        /* Specific overrides for the home page directory grid */
+        .directory-container {
+            max-width: 1000px;
             margin: 0 auto;
+            padding: 40px 20px;
         }
 
-        .grid {
+        .directory-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            text-align: left;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
         }
 
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 2rem;
+        .directory-card {
             text-decoration: none;
-            color: white;
-            transition: all 0.3s ease;
+            color: var(--text-main);
             display: flex;
             flex-direction: column;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
+        .directory-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
             border-color: rgba(255, 255, 255, 0.15);
-            background: rgba(255, 255, 255, 0.05);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
         }
 
-        .card:hover::before {
-            opacity: 1;
+        .directory-card .icon-wrapper {
+            margin-bottom: 20px;
         }
 
-        .icon-wrapper {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
+        .directory-card h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #ffffff;
         }
 
-        .icon-wrapper.blue {
-            background: rgba(59, 130, 246, 0.1);
-            color: #60A5FA;
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
-        }
-
-        .icon-wrapper.purple {
-            background: rgba(139, 92, 246, 0.1);
-            color: #A78BFA;
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.1);
-        }
-
-        .icon-wrapper.navy {
-            background: rgba(30, 58, 138, 0.3);
-            color: #93C5FD;
-            border: 1px solid rgba(147, 197, 253, 0.2);
-        }
-
-        .card h2 {
-            font-size: 1.25rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-
-        .card p {
+        .directory-card p {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.5;
-            margin-bottom: 1.5rem;
+            font-size: 14px;
+            line-height: 1.6;
             flex-grow: 1;
+            margin-bottom: 24px;
         }
 
-        .card-footer {
+        .card-link {
             display: flex;
             align-items: center;
-            color: var(--blue);
-            font-size: 0.9rem;
+            gap: 8px;
+            color: var(--nb-blue);
+            font-size: 14px;
             font-weight: 500;
             opacity: 0.8;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
 
-        .card:hover .card-footer {
+        .directory-card:hover .card-link {
             opacity: 1;
-            transform: translateX(5px);
+            transform: translateX(4px);
         }
 
-        .card-footer i {
+        .card-link i {
             width: 16px;
             height: 16px;
-            margin-left: 6px;
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .header-center {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 60px;
         }
 
-        .fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
+        .header-center .badge-wrapper {
+            justify-content: center;
         }
 
-        .delay-1 {
-            animation-delay: 0.1s;
-            opacity: 0;
-        }
-
-        .delay-2 {
-            animation-delay: 0.2s;
-            opacity: 0;
-        }
-
-        .delay-3 {
-            animation-delay: 0.3s;
-            opacity: 0;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            .grid {
-                grid-template-columns: 1fr;
-            }
+        .header-center .subtitle {
+            text-align: center;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
     </style>
 </head>
 
-<body>
-    <div class="bg-glow"></div>
-    <div class="bg-glow-purple"></div>
+<body class="theme-dark">
+    <!-- Ambient Background Effects -->
+    <div class="ambient-glow glow-blue" style="top: -20%; left: -10%;"></div>
+    <div class="ambient-glow glow-purple" style="bottom: -20%; right: -10%;"></div>
+    <div class="particles-container" id="particles"></div>
 
-    <div class="container fade-in">
-        <div class="header">
-            <div class="badge">
-                <span class="dot"></span>
-                NEONBLUE
+    <div class="directory-container fade-in">
+        <!-- Header -->
+        <header class="report-header header-center slide-up" style="animation-delay: 0.1s;">
+            <div class="badge-wrapper">
+                <span class="badge">
+                    <span class="dot"></span>
+                    NEONBLUE TEMPLATES
+                    <span class="dot"></span>
+                </span>
             </div>
-            <h1>Customer Success Templates</h1>
-            <p class="subtitle">A library of standard documents for marketing result reporting and internal/external
-                campaign proposals.</p>
-        </div>
+            <h1>Customer Success Library</h1>
+            <p class="subtitle">A collection of standard documents for marketing result reporting and internal/external
+                campaign test proposals.</p>
+        </header>
 
-        <div class="grid">
+        <!-- Directory Grid -->
+        <div class="directory-grid">
+
             <!-- Marketing Report -->
-            <a href="marketing-report-template/index.html" class="card fade-in delay-1">
+            <a href="marketing-report-template/index.html" class="glass-card directory-card slide-up"
+                style="animation-delay: 0.2s;">
                 <div class="icon-wrapper blue">
                     <i data-feather="bar-chart-2"></i>
                 </div>
                 <h2>Marketing Report</h2>
-                <p>A customer-facing dashboard visualizing test performance, KPIs, and actionable learnings.</p>
-                <div class="card-footer">
-                    View Template <i data-feather="arrow-right"></i>
+                <p>A customer-facing, dark-themed dashboard visualizing test performance, KPIs, and actionable
+                    learnings.</p>
+                <div class="card-link">
+                    Open Template <i data-feather="arrow-right"></i>
                 </div>
             </a>
 
             <!-- Internal Proposal -->
-            <a href="marketing-report-template/proposal.html" class="card fade-in delay-2">
+            <a href="marketing-report-template/proposal.html" class="glass-card directory-card slide-up"
+                style="animation-delay: 0.3s;">
                 <div class="icon-wrapper navy">
                     <i data-feather="users"></i>
                 </div>
                 <h2>Internal Test Proposal</h2>
-                <p>Standard intake form for defining campaign strategy, targeting, and flow mechanics.</p>
-                <div class="card-footer">
-                    View Template <i data-feather="arrow-right"></i>
+                <p>A structured, light-themed intake form for defining campaign strategy, targeting, and flow mechanics
+                    internally.</p>
+                <div class="card-link">
+                    Open Template <i data-feather="arrow-right"></i>
                 </div>
             </a>
 
             <!-- Client Proposal -->
-            <a href="marketing-report-template/proposal-client.html" class="card fade-in delay-3">
+            <a href="marketing-report-template/proposal-client.html" class="glass-card directory-card slide-up"
+                style="animation-delay: 0.4s;">
                 <div class="icon-wrapper purple">
                     <i data-feather="file-text"></i>
                 </div>
                 <h2>Client Test Proposal</h2>
-                <p>A structured format for pitching new tests and creative strategies specifically to clients.</p>
-                <div class="card-footer">
-                    View Template <i data-feather="arrow-right"></i>
+                <p>A structured, light-themed format for pitching new tests and creative strategies specifically to
+                    clients.</p>
+                <div class="card-link">
+                    Open Template <i data-feather="arrow-right"></i>
                 </div>
             </a>
+
         </div>
     </div>
 
+    <!-- Particle Script -->
     <script>
         feather.replace();
+
+        // Particle generation (same as report)
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 20;
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+
+            // Random properties
+            const size = Math.random() * 3 + 1; // 1px to 4px
+            const posX = Math.random() * 100; // 0% to 100%
+            const posY = Math.random() * 100; // 0% to 100%
+            const delay = Math.random() * 15; // 0s to 15s delay
+            const duration = Math.random() * 10 + 10; // 10s to 20s
+            const opacity = Math.random() * 0.5 + 0.1; // 0.1 to 0.6
+
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${posX}vw`;
+            particle.style.top = `${posY}vh`;
+            particle.style.opacity = opacity;
+            particle.style.animation = `floatParticle ${duration}s ease-in-out ${delay}s infinite alternate`;
+
+            particlesContainer.appendChild(particle);
+        }
     </script>
 </body>
 
